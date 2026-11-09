@@ -6,7 +6,7 @@ Every morning at about 5am Darwin time, GitHub runs `checker.py` for free. It:
 2. Scores each spot out of 5: wind (0-3) + tide size (0-2), minus 1 if rain is likely.
 3. Lists the best windows around each tide change, and flags any that line up with dawn or dusk.
 4. Saves the result to `REPORT.md`, with a copy in `reports/`.
-5. Opens a GitHub **issue** with the report. GitHub emails you about it, so that's your morning ping. Yesterday's issue gets closed automatically.
+5. Opens a GitHub **issue** with the report. GitHub emails you about it, so that's your morning ping.
 
 ## Where things are
 

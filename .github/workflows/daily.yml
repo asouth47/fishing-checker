@@ -48,10 +48,7 @@ jobs:
           MAILED: ${{ steps.mail.outputs.sent }}
         run: |
           gh label create outlook --color 1d76db --description "Daily fishing outlook" 2>/dev/null || true
-          # Close yesterday's so only today's is open
-          for n in $(gh issue list --label outlook --state open --json number -q '.[].number'); do
-            gh issue close "$n" --reason completed
-          done
+          # Old outlooks are left open on purpose: closing them makes GitHub send an extra email.
           # The @mention makes GitHub email the owner (mentions are emailed by default)
           # Point the chart at its full GitHub address so it shows in the issue
           sed "s#(charts/#(https://raw.githubusercontent.com/${{ github.repository }}/main/charts/#" REPORT.md > report_abs.md
