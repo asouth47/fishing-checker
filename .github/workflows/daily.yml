@@ -54,7 +54,7 @@ jobs:
           done
           # The @mention makes GitHub email the owner (mentions are emailed by default)
           # Point the chart at its full GitHub address so it shows in the issue
-          sed "s#(charts/#(https://github.com/${{ github.repository }}/raw/main/charts/#" REPORT.md > report_abs.md
+          sed "s#(charts/#(https://raw.githubusercontent.com/${{ github.repository }}/main/charts/#" REPORT.md > report_abs.md
           # Only @mention (which triggers GitHub's own email) if the direct email didn't go
           if [ "$MAILED" = "yes" ]; then cp report_abs.md issue.md; else
             { echo "@${{ github.repository_owner }} your fishing outlook is in."; echo; cat report_abs.md; } > issue.md
