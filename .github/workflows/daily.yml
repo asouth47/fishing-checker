@@ -1,0 +1,62 @@
+name: Daily fishing outlook
+
+on:
+  schedule:
+    # 19:30 UTC = 5:00am Darwin time. GitHub can run scheduled jobs a bit late.
+    - cron: "30 19 * * *"
+  workflow_dispatch: {}   # adds a "Run workflow" button so you can run it any time
+
+permissions:
+  contents: write   # save the report into the repo
+  issues: write     # open the daily issue (that's what emails you)
+
+jobs:
+  outlook:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install chart library
+        run: pip install --quiet matplotlib markdown
+
+      - name: Work out today's outlook
+        env:
+          TZ: Australia/Darwin
+        run: python3 checker.py
+
+      - name: Save the report
+        run: |
+          git config user.name "fishing-checker"
+          git config user.email "fishing-checker@users.noreply.github.com"
+          git add REPORT.md reports/ charts/
+          git commit -m "Outlook for $(TZ=Australia/Darwin date +%F)" || echo "No changes"
+          git push
+
+      - name: Email it with the chart (needs GMAIL_APP_PASSWORD secret)
+        id: mail
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          MAIL_FROM: ${{ secrets.MAIL_FROM }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+        run: |
+          python3 send_email.py | tee mail.log
+          grep -q "^Emailed" mail.log && echo "sent=yes" >> "$GITHUB_OUTPUT" || echo "sent=no" >> "$GITHUB_OUTPUT"
+
+      - name: Post it as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MAILED: ${{ steps.mail.outputs.sent }}
+        run: |
+          gh label create outlook --color 1d76db --description "Daily fishing outlook" 2>/dev/null || true
+          # Close yesterday's so only today's is open
+          for n in $(gh issue list --label outlook --state open --json number -q '.[].number'); do
+            gh issue close "$n" --reason completed
+          done
+          # The @mention makes GitHub email the owner (mentions are emailed by default)
+          # Point the chart at its full GitHub address so it shows in the issue
+          sed "s#(charts/#(https://github.com/${{ github.repository }}/raw/main/charts/#" REPORT.md > report_abs.md
+          # Only @mention (which triggers GitHub's own email) if the direct email didn't go
+          if [ "$MAILED" = "yes" ]; then cp report_abs.md issue.md; else
+            { echo "@${{ github.repository_owner }} your fishing outlook is in."; echo; cat report_abs.md; } > issue.md
+          fi
+          gh issue create --title "$(cat title.txt)" --body-file issue.md --label outlook
