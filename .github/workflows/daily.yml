@@ -2,8 +2,13 @@ name: Daily fishing outlook
 
 on:
   schedule:
-    # 19:30 UTC = 5:00am Darwin time. GitHub can run scheduled jobs a bit late.
-    - cron: "30 19 * * *"
+    # Times are UTC (Darwin is UTC+9:30). GitHub sometimes skips scheduled runs
+    # when it's busy, so there are four tries: 4:47, 5:17, 5:47 and 6:17am Darwin.
+    # Whichever runs first sends the outlook; the later ones see it's done and stop.
+    - cron: "17 19 * * *"
+    - cron: "47 19 * * *"
+    - cron: "17 20 * * *"
+    - cron: "47 20 * * *"
   workflow_dispatch: {}   # adds a "Run workflow" button so you can run it any time
 
 permissions:
@@ -16,15 +21,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Already sent today?
+        id: guard
+        run: |
+          today=$(TZ=Australia/Darwin date +%F)
+          if [ "${{ github.event_name }}" = "schedule" ] && [ -f "reports/$today.md" ]; then
+            echo "Today's outlook already sent - nothing to do."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Install chart library
+        if: steps.guard.outputs.skip != 'true'
         run: pip install --quiet matplotlib markdown
 
       - name: Work out today's outlook
+        if: steps.guard.outputs.skip != 'true'
         env:
           TZ: Australia/Darwin
         run: python3 checker.py
 
       - name: Save the report
+        if: steps.guard.outputs.skip != 'true'
         run: |
           git config user.name "fishing-checker"
           git config user.email "fishing-checker@users.noreply.github.com"
@@ -33,6 +52,7 @@ jobs:
           git push
 
       - name: Email it with the chart (needs GMAIL_APP_PASSWORD secret)
+        if: steps.guard.outputs.skip != 'true'
         id: mail
         env:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
@@ -43,6 +63,7 @@ jobs:
           grep -q "^Emailed" mail.log && echo "sent=yes" >> "$GITHUB_OUTPUT" || echo "sent=no" >> "$GITHUB_OUTPUT"
 
       - name: Post it as an issue
+        if: steps.guard.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
           MAILED: ${{ steps.mail.outputs.sent }}

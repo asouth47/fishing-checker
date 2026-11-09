@@ -1,6 +1,6 @@
 # Fishing checker
 
-Every morning at about 5am Darwin time, GitHub runs `checker.py` for free. It:
+Every morning between about 4:45 and 6:15am Darwin time, GitHub runs `checker.py` for free. It:
 
 1. Grabs the tide and weather forecast for Weed Reef, Elizabeth River, Adelaide River mouth and Dundee Beach.
 2. Scores each spot out of 5: wind (0-3) + tide size (0-2), minus 1 if rain is likely.
