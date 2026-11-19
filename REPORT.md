@@ -1,56 +1,56 @@
-# Fishing outlook - Wednesday 18 November 2026
+# Fishing outlook - Thursday 19 November 2026
 
 **Overall: GOOD**, best bet is **Weed Reef (Darwin Harbour)**.
 
-![Tide chart for Weed Reef (Darwin Harbour)](charts/2026-11-18.png)
+![Tide chart for Weed Reef (Darwin Harbour)](charts/2026-11-19.png)
 
-## Weed Reef (Darwin Harbour) - GOOD (score 5/5)
+## Weed Reef (Darwin Harbour) - GOOD (score 4/5)
 
-- **Wind (6am-2pm):** 5 kn NE, gusts to 14 kn
-- **Rain:** up to 20% chance
+- **Wind (6am-2pm):** 4 kn E, gusts to 14 kn
+- **Rain:** up to 95% chance
 - **Tide:** 1.2 m swing, neap (smaller tide, cleaner water)
-- **Changes:** Low 06:25 (3.7 m), High 11:04 (4.5 m), Low 17:43 (3.3 m)
-- **Sun:** up 06:10, down 18:53
+- **Changes:** Low 07:45 (3.5 m), High 13:50 (4.7 m), Low 19:24 (3.5 m)
+- **Sun:** up 06:10, down 18:54
 - **Best windows:**
-  - 05:25-07:55 around the low at 06:25 - lines up with dawn
-  - 10:04-12:34 around the high at 11:04
-  - 16:43-19:13 around the low at 17:43 - lines up with dusk
+  - 06:45-09:15 around the low at 07:45 - lines up with dawn
+  - 12:50-15:20 around the high at 13:50
+  - 18:24-20:54 around the low at 19:24 - lines up with dusk
 
-## Elizabeth River - GOOD (score 5/5)
+## Elizabeth River - GOOD (score 4/5)
 
-- **Wind (6am-2pm):** 3 kn SE, gusts to 12 kn
-- **Rain:** up to 57% chance
+- **Wind (6am-2pm):** 2 kn E, gusts to 12 kn
+- **Rain:** up to 100% chance
 - **Tide:** 1.2 m swing, neap (smaller tide, cleaner water)
-- **Changes:** Low 06:28 (3.7 m), High 11:00 (4.5 m), Low 17:43 (3.3 m)
-- **Sun:** up 06:09, down 18:52
+- **Changes:** Low 07:46 (3.5 m), High 13:53 (4.7 m), Low 19:29 (3.5 m)
+- **Sun:** up 06:09, down 18:53
 - **Best windows:**
-  - 05:28-07:58 around the low at 06:28 - lines up with dawn
-  - 10:00-12:30 around the high at 11:00
-  - 16:43-19:13 around the low at 17:43 - lines up with dusk
+  - 06:46-09:16 around the low at 07:46 - lines up with dawn
+  - 12:53-15:23 around the high at 13:53
+  - 18:29-20:59 around the low at 19:29 - lines up with dusk
 
-## Adelaide River mouth - GOOD (score 5/5)
+## Adelaide River mouth - GOOD (score 4/5)
 
-- **Wind (6am-2pm):** 4 kn E, gusts to 15 kn
-- **Rain:** up to 27% chance
-- **Tide:** 1.4 m swing, neap (smaller tide, cleaner water)
-- **Changes:** Low 07:10 (3.5 m), High 12:48 (4.7 m), Low 18:48 (3.3 m)
+- **Wind (6am-2pm):** 3 kn NE, gusts to 14 kn
+- **Rain:** up to 97% chance
+- **Tide:** 2.2 m swing, neap (smaller tide, cleaner water)
+- **Changes:** High 01:40 (5.6 m), Low 08:14 (3.3 m), High 14:20 (4.9 m), Low 20:13 (3.4 m)
 - **Sun:** up 06:09, down 18:51
 - **Best windows:**
-  - 06:10-08:40 around the low at 07:10 - lines up with dawn
-  - 11:48-14:18 around the high at 12:48
-  - 17:48-20:18 around the low at 18:48 - lines up with dusk
+  - 07:14-09:44 around the low at 08:14
+  - 13:20-15:50 around the high at 14:20
+  - 19:13-21:43 around the low at 20:13 - lines up with dusk
 
 ## Dundee Beach - GOOD (score 4/5)
 
-- **Wind (6am-2pm):** 4 kn S, gusts to 16 kn
-- **Rain:** up to 61% chance
-- **Tide:** 1.0 m swing, neap (smaller tide, cleaner water)
-- **Changes:** Low 05:57 (3.9 m), High 10:49 (4.4 m), Low 17:03 (3.4 m)
+- **Wind (6am-2pm):** 4 kn SE, gusts to 16 kn
+- **Rain:** up to 100% chance
+- **Tide:** 0.9 m swing, neap (smaller tide, cleaner water)
+- **Changes:** Low 07:28 (3.6 m), High 13:08 (4.5 m), Low 18:46 (3.7 m)
 - **Sun:** up 06:11, down 18:55
 - **Best windows:**
-  - 04:57-07:27 around the low at 05:57 - lines up with dawn
-  - 09:49-12:19 around the high at 10:49
-  - 16:03-18:33 around the low at 17:03 - lines up with dusk
+  - 06:28-08:58 around the low at 07:28 - lines up with dawn
+  - 12:08-14:38 around the high at 13:08
+  - 17:46-20:16 around the low at 18:46 - lines up with dusk
 
 ### Tips for today
 
